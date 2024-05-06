@@ -2,6 +2,7 @@
 # Hospital Automation System
 
 Built with Node.js, this web app transforms hospital appointment management. Patients can easily book appointments, while doctors gain a central hub to track schedules, write diagnoses, and improve patient care efficiency.
+![Screenshot 2024-05-06 165439](https://github.com/dtksagyn/hospital-automation-system-dbms/assets/161740245/6f5954c3-0ee4-4026-96be-53a5b31685e5)
 
 ## Prerequisites
  Node.js v20.12.2 or later - install from https://nodejs.org/
