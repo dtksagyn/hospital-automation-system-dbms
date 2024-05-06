@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Ticket</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-y: scroll;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #dde5f4;
+            height: 100vh;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url(https://img.freepik.com/free-photo/physician-noting-down-symptoms-patient_53876-63308.jpg?t=st=1714307514~exp=1714311114~hmac=acf7cafca73a2054eae62c132f8ff4e707aebccfdc721cb04005257d22d73404&w=1060) no-repeat center;
+            background-size: cover;
+            filter: blur(6px);
+        }
+
+        .ticket {
+            padding: 25px 30px;
+            color: #023047;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(33, 151, 188, 0.4);
+            background-color: rgba(255, 255, 255, 0.6);
+            overflow: auto;
+            position: relative;
+        }
+
+        .ticket-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .ticket-body {
+            margin-bottom: 20px;
+        }
+
+        .print-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .print-button button {
+            padding: 10px 20px;
+            background-color: #219EBC;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .print-button button :hover {
+            background-color: transparent;
+            color: #219EBC;
+            border: 2px solid #219EBC;
+            border-radius: 20px;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .back-button a {
+            padding: 10px 20px;
+            background-color: #023047;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .back-button a:hover {
+            background-color: transparent;
+            color: #023047;
+            border: 2px solid #023047;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="ticket">
+        <div class="ticket-header">
+            <!-- Display the QR code -->
+            <img src="<%= diagnosis.qrcode %>" alt="QR Code">
+            <h2>Diagnosis Ticket</h2>
+        </div>
+        <div class="ticket-body">
+            <p><strong>First Name:</strong>
+                <%= appointment.firstName %>
+            </p>
+            <p><strong>Last Name:</strong>
+                <%= appointment.lastName %>
+            </p>
+            <p><strong>SSN:</strong>
+                <%= appointment.ssn %>
+            </p>
+            <p><strong>Diagnosis ID:</strong>
+                <%= diagnosis.diagnosisId %>
+            </p>
+            <p><strong>Description:</strong>
+                <%= diagnosis.description %>
+            </p>
+            <p><strong>Medication:</strong>
+                <%= diagnosis.medication %>
+            </p>
+        </div>
+        <div class="print-button">
+            <button onclick="window.print()">Print Ticket</button>
+        </div>
+        <div class="back-button">
+            <a href="/doctors/dashboard" class="btn btn-secondary">Go Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+
+</html>

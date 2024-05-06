@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Doctor Dashboard</a>
+            <span class="navbar-text">
+                Welcome, Dr. John Doe! <a href="/logout" class="text-light">Logout</a>
+            </span>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <section class="mb-4">
+            <h2>Upcoming Appointments</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Patient</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024-04-05</td>
+                            <td>09:00 AM</td>
+                            <td>John Doe</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">
+                                    Add Description
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2024-04-06</td>
+                            <td>10:30 AM</td>
+                            <td>Jane Smith</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">
+                                    Add Description
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2024-04-07</td>
+                            <td>02:00 PM</td>
+                            <td>Alice Johnson</td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#appointmentModal">
+                                    Add Description
+                                </button>
+                            </td>
+                        </tr>
+                        <!-- Add more table rows for additional test appointments -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Add more sections for past appointments, filtering options, etc. -->
+    </main>
+
+    <footer class="mt-auto py-3 bg-dark text-white">
+        <div class="container text-center">
+            <!-- Add your footer content here -->
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (optional, if you need JavaScript functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Add your custom JavaScript code here
+    </script>
+
+    <!-- Modal for Adding Description -->
+    <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby=

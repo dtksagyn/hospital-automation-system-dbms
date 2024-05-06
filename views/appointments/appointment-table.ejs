@@ -1,0 +1,176 @@
+<!-- appointments_table.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-y: scroll;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #dde5f4;
+            height: 100vh;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url(https://img.freepik.com/free-photo/doctor-working-table_1098-19725.jpg?t=st=1714314366~exp=1714317966~hmac=c84e90e1bd6f958a2742ee03dc1750d6143f1e3c207e626a67c218c53e9ddfa6&w=1060) no-repeat center;
+            background-size: cover;
+            filter: blur(6px);
+        }
+
+        .container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 25px 30px;
+            color: #023047;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(33, 151, 188, 0.4);
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+
+
+
+        table {
+            width: 900px;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: .8rem;
+            overflow: hidden;
+        }
+
+        td {
+            padding: 15px;
+            background-color: #dde5f4;
+            color: #023047;
+            white-space: nowrap;
+            /* Prevent text from wrapping */
+            overflow: hidden;
+            /* Hide overflowing text */
+            text-overflow: ellipsis;
+            /* Display an ellipsis (...) for truncated text */
+        }
+
+        h1.title {
+            text-align: center;
+            margin: 25px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: #dde5f4;
+            color: #023047;
+        }
+
+        th {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        thead th {
+            background-color: #219EBC;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        tbody td {
+            position: relative;
+        }
+
+        tbody td:hover:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container mt-5">
+        <h1 class="title">Appointments</h1>
+        <div class="table-responsive">
+            <div class="container_table">
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
+                            <th>Department Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% appointments.forEach(appointment=> { %>
+                            <tr>
+                                <td>
+                                    <%= appointment.date %>
+                                </td>
+                                <td>
+                                    <%= appointment.time %>
+                                </td>
+                                <td>
+                                    <%= appointment.patientName %>
+                                </td>
+                                <td>
+                                    <%= appointment.doctorName %>
+                                </td>
+                                <td>
+                                    <%= appointment.departmentName %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to reload the page every 1 minute -->
+    <script>
+        setTimeout(function () {
+            window.location.reload();
+        }, 60000); // 1 minute = 60,000 milliseconds
+    </script>
+</body>
+
+</html>

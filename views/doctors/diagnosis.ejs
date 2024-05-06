@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnosis Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            overflow-y: scroll;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url(https://img.freepik.com/free-photo/hands-unrecognizable-female-doctor-writing-form-typing-laptop-keyboard_1098-20374.jpg?t=st=1714304008~exp=1714307608~hmac=5578088b10d416e912caf0384c895ec757aba19b1352faa83e5a0c2d94af9e62&w=1060) no-repeat center;
+            background-size: cover;
+            filter: blur(6px);
+        }
+
+        .container {
+
+            padding: 15px 20px;
+            color: #023047;
+            max-width: 400px;
+            margin: 50px auto;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(33, 151, 188, 0.4);
+            background-color: rgba(255, 255, 255, 0.6);
+            overflow: auto;
+            position: relative;
+        }
+
+        .form-group {
+            border-radius: 30px;
+            box-shadow: 0 0 2em #e6e9f9;
+            color: #023047;
+        }
+
+        .btn {
+            background-color: #219EBC;
+            border-radius: 20px;
+            border-color: transparent;
+            width: 70%;
+        }
+
+        .btn:hover {
+
+            background-color: transparent;
+            color: #219EBC;
+            border: 2px solid #219EBC;
+        }
+
+        h3 {
+            text-align: center;
+            margin: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 15px;
+        }
+
+        .form-group input {
+            border-radius: 20PX;
+            background-color: #dde5f4;
+        }
+
+        .form-group textarea {
+            border-radius: 20PX;
+            background-color: #dde5f4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="container mt-5">
+        <h1>Diagnosis Form</h1>
+        <div class="appointment-info">
+            <h3>Appointment Information</h3>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" name="firstName"
+                    value="<%= appointment.firstName %>" disabled>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" name="lastName"
+                    value="<%= appointment.lastName %>" disabled>
+            </div>
+
+            <!-- Diğer randevu bilgileri buraya eklenebilir -->
+        </div>
+        <form action="/doctors/diagnosis" method="POST">
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="medication">Medication</label>
+                <input type="text" class="form-control" id="medication" name="medication">
+            </div>
+            <div class="form-group text-center">
+                <input type="hidden" name="appointmentId" value="<%= appointment.appointmentId %>">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+
+
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      overflow-y: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url(https://img.freepik.com/free-photo/blurred-abstract-background-interior-view-looking-out-toward-empty-office-lobby-entrance-doors-glass-curtain-wall-with-frame_1339-6363.jpg?t=st=1714302708~exp=1714306308~hmac=987a9e5c9e56e6602bd51333e6ebbe8d5504b37c250baa6f63ecc77ca486af91&w=996) no-repeat center;
+      background-size: cover;
+    }
+  
+
+    .container {
+      padding: 25px 30px;
+      color: #023047;
+      max-width: 420px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 40px;
+      box-shadow: 0 0 10px rgba(33, 151,188, 0.4);
+      background-color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+    }
+
+
+    .form-group {
+      padding: 2px;
+      border-radius: 10px;
+      display: flex;
+    }
+
+    .form-group i {
+      margin: 8px;
+    }
+
+    .form-group input {
+      border-radius: 20px;
+      padding: 15px;
+
+    }
+
+    .btn {
+      background-color: #219EBC;
+      border-radius: 20px;
+      border-color: transparent;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-selected {
+      background-color: #219EBC;
+      color: #fff;
+    }
+
+    .btn :focus {
+      box-shadow: 0 0 0 0.2rem;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: #219EBC;
+      border: 2px solid #219EBC;
+    }
+  </style>
+</head>
+
+<body> <div class="container">
+    <h1 class="mb-4">Login</h1>
+
+    <% if(errorMessage) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= errorMessage %>
+      </div>
+      <% } %>
+
+        <form action="/doctors/login" method="POST">
+          <div class="form-group">
+            <input type="email" placeholder="Email address" class="form-control" id="email" name="email" required>
+            <i class='bx bx-envelope'></i>
+          </div>
+          <div class="form-group">
+            <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
+            <i class='bx bx-key'></i>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <div class="remember-forgot">
+            <label><input type="checkbox">Remember me</label>
+            <a href="#">Forgot password</a>
+          </div>
+
+
+        </form>
+  </div>
+  <!-- Bootstrap JS (optional, if needed) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
