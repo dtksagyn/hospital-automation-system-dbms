@@ -2,11 +2,22 @@
 # Hospital Automation System
 
 Built with Node.js, this web app transforms hospital appointment management. Patients can easily book appointments, while doctors gain a central hub to track schedules, write diagnoses, and improve patient care efficiency.
+
+## Watch video how does it work
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=9drUB1ugAQc)
+
+
+
 ![Screenshot 2024-05-06 165439](https://github.com/dtksagyn/hospital-automation-system-dbms/assets/161740245/6f5954c3-0ee4-4026-96be-53a5b31685e5)
+
 
 ## Prerequisites
  Node.js v20.12.2 or later - install from https://nodejs.org/
 ## Get Your Hospital App Running!
+
+![Screenshot 2024-05-06 165808](https://github.com/dtksagyn/hospital-automation-system-dbms/assets/161740245/b3d46291-c203-4b0c-a690-107551dea53b)
+
 
 1. Download the repository
 ```bash
@@ -76,7 +87,11 @@ When you start the app you'll receive main page
 ## Technologies
 
 ### Backend
+![1_TY9uBBO9leUbRtlXmQBiug](https://github.com/dtksagyn/hospital-automation-system-dbms/assets/161740245/4691dea8-9fbe-46fb-a28b-6bda3d6bc2b4)
 
 ### Frontend
+![150-1506141_html-css-and-javascript-logo-html5-css3-js](https://github.com/dtksagyn/hospital-automation-system-dbms/assets/161740245/e80e6ab9-cec5-4cf5-81e0-eaf730cf72e5)
 
 ### Database Schema
+![Screenshot 2024-05-06 170234](https://github.com/dtksagyn/hospital-automation-system-dbms/assets/161740245/49646dad-3573-4165-9e60-eb4cceeea5da)
+
