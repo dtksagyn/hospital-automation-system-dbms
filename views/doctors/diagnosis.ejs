@@ -11,10 +11,6 @@
         @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
         body {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
             overflow-y: scroll;
             display: flex;
             justify-content: center;
@@ -85,11 +81,34 @@
             border-radius: 20PX;
             background-color: #dde5f4;
         }
+
+        .header_section {
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 20px;
+        }
+
+        .navbar-brand span {
+            font-weight: bold;
+            font-size: 24px;
+            color: #023047;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body>
     <div class="background"></div>
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+                <span>
+                    CareMed
+                </span>
+            </a>
+        </nav>
+    </header>
     <div class="container mt-5">
         <h1>Diagnosis Form</h1>
         <div class="appointment-info">

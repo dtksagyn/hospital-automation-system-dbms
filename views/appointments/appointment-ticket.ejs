@@ -76,11 +76,34 @@
             color: #219EBC;
             border: 2px solid #219EBC;
         }
+
+        .header_section {
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 20px;
+        }
+
+        .navbar-brand span {
+            font-weight: bold;
+            font-size: 24px;
+            color: #023047;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body>
     <div class="background"></div>
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+                <span>
+                    CareMed
+                </span>
+            </a>
+        </nav>
+    </header>
     <div class="ticket">
         <div class="ticket-header">
             <!-- Display the QR code -->

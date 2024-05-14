@@ -79,7 +79,6 @@ a:focus {
   text-align: center;
   text-transform: uppercase;
   border-radius: 5px;
-  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 /*end header section*/
