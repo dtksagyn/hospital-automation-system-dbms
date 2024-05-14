@@ -20,9 +20,6 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
             overflow-y: scroll;
             display: flex;
@@ -73,11 +70,8 @@
             background-color: #dde5f4;
             color: #023047;
             white-space: nowrap;
-            /* Prevent text from wrapping */
             overflow: hidden;
-            /* Hide overflowing text */
             text-overflow: ellipsis;
-            /* Display an ellipsis (...) for truncated text */
         }
 
         h1.title {
@@ -119,11 +113,34 @@
             background-color: rgba(255, 255, 255, 0.2);
             z-index: -1;
         }
+
+        .header_section {
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 20px;
+        }
+
+        .navbar-brand span {
+            font-weight: bold;
+            font-size: 24px;
+            color: #023047;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 
 <body>
     <div class="background"></div>
+    <header class="header_section">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <a class="navbar-brand" href="index.html">
+                <span>
+                    CareMed
+                </span>
+            </a>
+        </nav>
+    </header>
     <div class="container mt-5">
         <h1 class="title">Appointments</h1>
         <div class="table-responsive">
