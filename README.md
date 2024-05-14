@@ -21,7 +21,7 @@ Built with Node.js, this web app transforms hospital appointment management. Pat
 
 1. Download the repository
 ```bash
-  git clone https://github.com/margiki/NHS-nodejs-webapp
+  git clone https://github.com/dtksagyn/hospital-automation-system-dbms
 ```
 
 
