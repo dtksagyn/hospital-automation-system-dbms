@@ -1,0 +1,44 @@
+:root {
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Border radius */
+  --radius-sm: 0.75rem;
+  --radius-md: 0.85rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* Spacing */
+  --site-header-height-fallback: 4.5rem;
+  --stats-bar-overlap: -1.5rem;
+
+  /* Letter spacing */
+  --tracking-wide-2: 0.18em;
+
+  /* Shadows */
+  --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --shadow-card: 0 24px 60px -30px rgba(29, 91, 214, 0.28);
+  --shadow-card-hover: 0 20px 45px -28px rgba(29, 91, 214, 0.3);
+  --shadow-mobile-nav: 0 24px 48px -24px rgba(18, 32, 59, 0.35);
+
+  /* Z-index layers */
+  --z-mobile-backdrop: 1040;
+  --z-site-header: 1050;
+  --z-mobile-nav-panel: 1051;
+  --z-site-header-bar: 1052;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+
+  /* Layout */
+  --hero-image-max-height: 460px;
+  --hero-image-max-height-md: 380px;
+  --hero-image-max-height-sm: 280px;
+  --hero-frame-height: 500px;
+  --about-image-min-height: 18rem;
+  --content-max-width-sm: 28rem;
+  --content-max-width-md: 24rem;
+}

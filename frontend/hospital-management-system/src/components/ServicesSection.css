@@ -1,0 +1,20 @@
+.service-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-service-card-hover-border);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.service-card:hover .icon-badge {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}

@@ -1,0 +1,9 @@
+.cta-decor {
+  pointer-events: none;
+}
+
+@media (max-width: 575.98px) {
+  .cta-decor {
+    display: none !important;
+  }
+}

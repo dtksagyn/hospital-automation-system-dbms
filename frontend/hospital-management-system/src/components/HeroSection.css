@@ -1,0 +1,45 @@
+.hero-wash {
+  background: linear-gradient(
+    180deg,
+    var(--color-hero-gradient-start) 0%,
+    var(--color-surface) 55%
+  );
+}
+
+.hero-doctor-frame {
+  height: var(--hero-frame-height);
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--color-hero-frame-gradient-start),
+    var(--color-primary-soft)
+  );
+  padding: 1rem 0.5rem 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero-doctor-frame img {
+  width: 100%;
+  height: 100%;
+  max-height: var(--hero-image-max-height);
+  object-fit: cover;
+  transform: scale(1.08) translateY(-4.5%);
+}
+
+.hero-section__lead {
+  max-width: var(--content-max-width-sm);
+}
+
+@media (max-width: 991.98px) {
+  .hero-doctor-frame img {
+    max-height: var(--hero-image-max-height-md);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-doctor-frame img {
+    max-height: var(--hero-image-max-height-sm);
+  }
+}

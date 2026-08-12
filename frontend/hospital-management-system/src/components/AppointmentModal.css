@@ -1,0 +1,16 @@
+.appointment-modal .modal-title {
+  color: var(--color-text);
+}
+
+.appointment-modal .form-label {
+  color: var(--color-text);
+}
+
+.appointment-modal .text-ink-muted {
+  color: var(--color-text-muted);
+}
+
+.appointment-modal__qr {
+  width: 160px;
+  height: 160px;
+}

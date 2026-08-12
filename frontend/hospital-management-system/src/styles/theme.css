@@ -1,0 +1,55 @@
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #f7f9fe;
+  --color-text: #12203b;
+  --color-text-muted: #667595;
+  --color-primary: #1d5bd6;
+  --color-primary-hover: #1749ab;
+  --color-primary-soft: #eaf1fd;
+  --color-border: #e6ebf4;
+  --color-on-primary: #ffffff;
+  --color-header-bg: rgba(247, 249, 254, 0.92);
+  --color-mobile-panel-bg: rgba(247, 249, 254, 0.98);
+  --color-backdrop: rgba(18, 32, 59, 0.45);
+  --color-btn-on-brand-hover: #eef3fd;
+  --color-service-card-hover-border: rgba(29, 91, 214, 0.35);
+  --color-hero-gradient-start: #eaf1fd;
+  --color-hero-frame-gradient-start: rgba(29, 91, 214, 0.14);
+
+  /* Legacy aliases — keep existing utility class names working */
+  --brand: var(--color-primary);
+  --brand-dark: var(--color-primary-hover);
+  --brand-soft: var(--color-primary-soft);
+  --ink: var(--color-text);
+  --ink-muted: var(--color-text-muted);
+  --surface: var(--color-surface);
+  --line: var(--color-border);
+
+  /* Bootstrap theme mapping */
+  --bs-primary: var(--color-primary);
+  --bs-primary-rgb: 29, 91, 214;
+  --bs-link-color: var(--color-primary);
+  --bs-link-hover-color: var(--color-primary-hover);
+  --bs-body-color: var(--color-text);
+  --bs-body-bg: var(--color-surface);
+  --bs-border-color: var(--color-border);
+}
+
+[data-theme='dark'] {
+  --color-bg: #151f30;
+  --color-surface: #0f1728;
+  --color-text: #eef3fd;
+  --color-text-muted: #94a3b8;
+  --color-primary: #4d8bf7;
+  --color-primary-hover: #3b7ae6;
+  --color-primary-soft: #1e3a5f;
+  --color-border: #2a3649;
+  --color-on-primary: #ffffff;
+  --color-header-bg: rgba(15, 23, 40, 0.92);
+  --color-mobile-panel-bg: rgba(15, 23, 40, 0.98);
+  --color-backdrop: rgba(0, 0, 0, 0.55);
+  --color-btn-on-brand-hover: #24324a;
+  --color-service-card-hover-border: rgba(77, 139, 247, 0.45);
+  --color-hero-gradient-start: #1e3a5f;
+  --color-hero-frame-gradient-start: rgba(77, 139, 247, 0.18);
+}

@@ -1,0 +1,4 @@
+.about-section__image {
+  min-height: var(--about-image-min-height);
+  object-fit: cover;
+}

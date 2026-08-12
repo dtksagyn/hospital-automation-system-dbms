@@ -1,0 +1,126 @@
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-primary-soft);
+  color: var(--color-text);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+/* Reusable theme utilities */
+.text-brand {
+  color: var(--color-primary) !important;
+}
+
+.text-ink {
+  color: var(--color-text) !important;
+}
+
+.text-ink-muted {
+  color: var(--color-text-muted) !important;
+}
+
+.bg-brand {
+  background-color: var(--color-primary) !important;
+}
+
+.bg-brand-soft {
+  background-color: var(--color-primary-soft) !important;
+}
+
+.bg-surface {
+  background-color: var(--color-surface) !important;
+}
+
+.border-line {
+  border-color: var(--color-border) !important;
+}
+
+.tracking-wide-2 {
+  letter-spacing: var(--tracking-wide-2);
+}
+
+.rounded-4xl {
+  border-radius: var(--radius-2xl) !important;
+}
+
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.card-elevated {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-card);
+}
+
+.btn-brand {
+  --bs-btn-color: var(--color-on-primary);
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-color: var(--color-on-primary);
+  --bs-btn-hover-bg: var(--color-primary-hover);
+  --bs-btn-hover-border-color: var(--color-primary-hover);
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-focus-shadow-rgb: 29, 91, 214;
+}
+
+.btn-on-brand {
+  --bs-btn-color: var(--color-primary);
+  --bs-btn-bg: var(--color-bg);
+  --bs-btn-border-color: var(--color-bg);
+  --bs-btn-hover-color: var(--color-primary);
+  --bs-btn-hover-bg: var(--color-btn-on-brand-hover);
+  --bs-btn-hover-border-color: var(--color-btn-on-brand-hover);
+}
+
+.nav-link-brand {
+  color: var(--color-text-muted);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.nav-link-brand:hover,
+.nav-link-brand:focus {
+  color: var(--color-primary);
+}
+
+@media (max-width: 575.98px) {
+  .display-3 {
+    font-size: clamp(2.2rem, 11vw, 3rem);
+  }
+
+  .display-6 {
+    font-size: clamp(1.55rem, 6.5vw, 2rem);
+  }
+}
