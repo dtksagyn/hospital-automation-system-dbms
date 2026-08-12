@@ -19,7 +19,10 @@ const CONTACT = [
 
 export default function SiteFooter() {
   return (
-    <footer className="site-footer border-top border-line bg-white">
+    <footer
+      id="contact"
+      className="site-footer border-top border-line bg-white"
+    >
       <div className="container-xl py-5">
         <div className="row g-4">
           <div className="col-lg-6">
