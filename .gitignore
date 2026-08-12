@@ -1,0 +1,11 @@
+# Environment secrets (keep examples)
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.test
+**/.env.*.local
+
+# Allow template files
+!**/.env.example
+!.env.example
