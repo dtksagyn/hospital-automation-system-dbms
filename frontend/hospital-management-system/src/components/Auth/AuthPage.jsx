@@ -22,7 +22,7 @@ export default function AuthPage() {
 
   useEffect(() => {
     if (!loading && isAuthenticated) {
-      navigate("/", { replace: true });
+      navigate("/dashboard", { replace: true });
     }
   }, [loading, isAuthenticated, navigate]);
 
@@ -45,7 +45,7 @@ export default function AuthPage() {
 
       setUser(data.user);
       setSuccess(data.message);
-      navigate("/", { replace: true });
+      navigate("/dashboard", { replace: true });
     } catch (submitError) {
       setError(submitError.message);
     } finally {

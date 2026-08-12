@@ -166,6 +166,7 @@ const AppointmentController = {
       const encryptedPhone = cipher.encryptSSN(phone.trim());
 
       const appointment = await Appointment.create({
+        userId: req.user?._id || null,
         firstName,
         lastName,
         phone: phone.trim(),

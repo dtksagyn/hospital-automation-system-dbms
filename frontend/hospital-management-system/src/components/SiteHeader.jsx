@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
+import UserAccountMenu from "./UserAccountMenu";
 import "./SiteHeader.css";
 
 const NAV_LINKS = [
@@ -39,8 +40,7 @@ function Logo() {
 }
 
 export default function SiteHeader({ onBookAppointment }) {
-  const { user, isAuthenticated, logout } = useAuth();
-  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef(null);
 
@@ -49,12 +49,6 @@ export default function SiteHeader({ onBookAppointment }) {
   const handleBookAppointment = () => {
     closeMenu();
     onBookAppointment();
-  };
-
-  const handleLogout = async () => {
-    closeMenu();
-    await logout();
-    navigate("/");
   };
 
   useEffect(() => {
@@ -106,18 +100,7 @@ export default function SiteHeader({ onBookAppointment }) {
 
           <div className="d-none d-lg-flex align-items-center gap-3">
             {isAuthenticated ? (
-              <>
-                <span className="small text-ink-muted fw-semibold">
-                  Hi, {user.fullName.split(" ")[0]}
-                </span>
-                <button
-                  type="button"
-                  className="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </button>
-              </>
+              <UserAccountMenu />
             ) : (
               <Link
                 to="/login"
@@ -170,18 +153,10 @@ export default function SiteHeader({ onBookAppointment }) {
           ))}
         </nav>
         {isAuthenticated ? (
-          <>
-            <p className="small text-ink-muted fw-semibold mb-3">
-              Signed in as {user.fullName}
-            </p>
-            <button
-              type="button"
-              className="btn btn-outline-primary rounded-pill w-100 d-inline-flex align-items-center justify-content-center py-2 fw-semibold mb-3"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          </>
+          <UserAccountMenu
+            className="site-header-user-menu-mobile w-100 mb-3"
+            onNavigate={closeMenu}
+          />
         ) : (
           <Link
             to="/login"

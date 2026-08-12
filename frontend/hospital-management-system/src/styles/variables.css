@@ -41,4 +41,11 @@
   --about-image-min-height: 18rem;
   --content-max-width-sm: 28rem;
   --content-max-width-md: 24rem;
+
+  /* Dashboard */
+  --dashboard-sidebar-width: 17.5rem;
+  --dashboard-header-height: 4.5rem;
+  --z-dashboard-backdrop: 1040;
+  --z-dashboard-sidebar: 1051;
+  --z-dashboard-header: 1050;
 }
