@@ -2,6 +2,7 @@ const API_BASE = import.meta.env.VITE_API_URL || '';
 
 async function request(path, options = {}) {
   const response = await fetch(`${API_BASE}${path}`, {
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       ...options.headers,
@@ -37,4 +38,28 @@ export function createAppointment(payload) {
     method: 'POST',
     body: JSON.stringify(payload),
   });
+}
+
+export function registerUser(payload) {
+  return request('/api/auth/register', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export function loginUser(payload) {
+  return request('/api/auth/login', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export function logoutUser() {
+  return request('/api/auth/logout', {
+    method: 'POST',
+  });
+}
+
+export function getCurrentUser() {
+  return request('/api/auth/me');
 }

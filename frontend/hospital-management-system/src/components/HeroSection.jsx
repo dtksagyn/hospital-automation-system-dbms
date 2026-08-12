@@ -59,10 +59,10 @@ export default function HeroSection({ onBookAppointment }) {
           </div>
 
           <div className="col-lg-6 text-center">
-            <div className="rounded-4xl hero-doctor-frame">
+            <div className=" hero-doctor-frame">
               <img
                 src="/images/doctor-hero.png"
-                alt="Smiling Nuvica Hospital doctor in a white coat with a stethoscope"
+                alt="Smiling CareMed Hospital doctor in a white coat with a stethoscope"
                 className="w-100 h-100 object-fit-cover"
               />
             </div>

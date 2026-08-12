@@ -6,6 +6,7 @@ import {
   getDepartments,
   getDoctorsByDepartment,
 } from '../services/api'
+import { filterNameInput, filterPhoneInput } from '../utils/inputConstraints'
 import './AppointmentModal.css'
 
 const INITIAL_FORM = {
@@ -143,7 +144,16 @@ export default function AppointmentModal({ show, onHide }) {
   }, [form.doctorId, form.date])
 
   const handleChange = (event) => {
-    const { name, value } = event.target
+    const { name } = event.target
+    let { value } = event.target
+
+    if (name === 'fullName') {
+      value = filterNameInput(value)
+    }
+
+    if (name === 'phone') {
+      value = filterPhoneInput(value)
+    }
 
     if (name === 'departmentId') {
       setForm((current) => ({
@@ -295,6 +305,8 @@ export default function AppointmentModal({ show, onHide }) {
                   value={form.fullName}
                   onChange={handleChange}
                   placeholder="Enter your full name"
+                  inputMode="text"
+                  autoComplete="name"
                   required
                   disabled={submitting}
                 />
@@ -308,6 +320,8 @@ export default function AppointmentModal({ show, onHide }) {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="Enter your phone number"
+                  inputMode="tel"
+                  autoComplete="tel"
                   required
                   disabled={submitting}
                 />

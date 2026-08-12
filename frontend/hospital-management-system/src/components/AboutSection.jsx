@@ -22,7 +22,7 @@ export default function AboutSection() {
         </div>
 
         <div className="col-lg-6">
-          <div className="card-elevated h-100 p-4 p-sm-5">
+          <div className="card-elevated h-100 p-4 p-sm-5 d-flex flex-column justify-content-center">
             <p className="small fw-semibold text-uppercase tracking-wide-2 text-brand mb-3">
               About Us
             </p>
