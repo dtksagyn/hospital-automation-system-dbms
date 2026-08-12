@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
 import "./SiteHeader.css";
 
 const NAV_LINKS = [
@@ -37,6 +39,8 @@ function Logo() {
 }
 
 export default function SiteHeader({ onBookAppointment }) {
+  const { user, isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const headerRef = useRef(null);
 
@@ -45,6 +49,12 @@ export default function SiteHeader({ onBookAppointment }) {
   const handleBookAppointment = () => {
     closeMenu();
     onBookAppointment();
+  };
+
+  const handleLogout = async () => {
+    closeMenu();
+    await logout();
+    navigate("/");
   };
 
   useEffect(() => {
@@ -94,14 +104,37 @@ export default function SiteHeader({ onBookAppointment }) {
             ))}
           </nav>
 
-          <button
-            type="button"
-            className="btn btn-brand rounded-pill d-none d-lg-inline-flex align-items-center gap-2 px-4 py-2"
-            onClick={onBookAppointment}
-          >
-            Book Appointment
-            <i className="bi bi-arrow-right-short fs-5" aria-hidden="true" />
-          </button>
+          <div className="d-none d-lg-flex align-items-center gap-3">
+            {isAuthenticated ? (
+              <>
+                <span className="small text-ink-muted fw-semibold">
+                  Hi, {user.fullName.split(" ")[0]}
+                </span>
+                <button
+                  type="button"
+                  className="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="btn btn-outline-primary rounded-pill px-4 py-2 fw-semibold"
+              >
+                Login
+              </Link>
+            )}
+            <button
+              type="button"
+              className="btn btn-brand rounded-pill d-inline-flex align-items-center gap-2 px-4 py-2"
+              onClick={onBookAppointment}
+            >
+              Book Appointment
+              <i className="bi bi-arrow-right-short fs-5" aria-hidden="true" />
+            </button>
+          </div>
 
           <button
             type="button"
@@ -136,6 +169,28 @@ export default function SiteHeader({ onBookAppointment }) {
             </a>
           ))}
         </nav>
+        {isAuthenticated ? (
+          <>
+            <p className="small text-ink-muted fw-semibold mb-3">
+              Signed in as {user.fullName}
+            </p>
+            <button
+              type="button"
+              className="btn btn-outline-primary rounded-pill w-100 d-inline-flex align-items-center justify-content-center py-2 fw-semibold mb-3"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            className="btn btn-outline-primary rounded-pill w-100 d-inline-flex align-items-center justify-content-center py-2 fw-semibold mb-3"
+            onClick={closeMenu}
+          >
+            Login
+          </Link>
+        )}
         <button
           type="button"
           className="btn btn-brand rounded-pill w-100 d-inline-flex align-items-center justify-content-center gap-2 py-2"

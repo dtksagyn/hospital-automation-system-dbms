@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const connectDB = require('../utils/db');
 const Department = require('../models/department');
 const Doctor = require('../models/doctor');
+const User = require('../models/user');
 
 const departments = [
   { departmentName: 'Cardiology' },
@@ -23,7 +24,7 @@ const doctors = [
 async function seed() {
   await connectDB();
 
-  await Promise.all([Department.deleteMany({}), Doctor.deleteMany({})]);
+  await Promise.all([Department.deleteMany({}), Doctor.deleteMany({}), User.deleteMany({})]);
 
   const createdDepartments = await Department.insertMany(departments);
   const departmentMap = Object.fromEntries(
@@ -40,10 +41,17 @@ async function seed() {
     });
   }
 
+  await User.create({
+    fullName: 'Jane Patient',
+    email: 'patient@caremed.com',
+    password: bcrypt.hashSync('patient123', 12),
+  });
+
   console.log('Seed complete.');
   console.log('Departments:', createdDepartments.length);
   console.log('Doctors:', doctors.length);
   console.log('Demo doctor login: doctor@caremed.com / doctor123');
+  console.log('Demo patient login: patient@caremed.com / patient123');
 
   process.exit(0);
 }
