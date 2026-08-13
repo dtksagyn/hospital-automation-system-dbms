@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Alert, Button, Form, Modal, Spinner } from 'react-bootstrap'
+import { useAuth } from '../context/AuthContext'
 import {
   createAppointment,
   getAvailableSlots,
@@ -18,7 +19,8 @@ const INITIAL_FORM = {
   time: '',
 }
 
-export default function AppointmentModal({ show, onHide }) {
+export default function AppointmentModal({ show, onHide, onBooked }) {
+  const { user } = useAuth()
   const [form, setForm] = useState(INITIAL_FORM)
   const [departments, setDepartments] = useState([])
   const [doctors, setDoctors] = useState([])
@@ -33,6 +35,13 @@ export default function AppointmentModal({ show, onHide }) {
 
   useEffect(() => {
     if (!show) return undefined
+
+    if (user?.fullName) {
+      setForm((current) => ({
+        ...current,
+        fullName: current.fullName || user.fullName,
+      }))
+    }
 
     let cancelled = false
 
@@ -61,7 +70,7 @@ export default function AppointmentModal({ show, onHide }) {
     return () => {
       cancelled = true
     }
-  }, [show])
+  }, [show, user?.fullName])
 
   useEffect(() => {
     if (!form.departmentId) {
@@ -223,6 +232,7 @@ export default function AppointmentModal({ show, onHide }) {
     try {
       const data = await createAppointment(form)
       setBookingResult(data.appointment)
+      onBooked?.()
     } catch (submitError) {
       setError(submitError.message)
     } finally {

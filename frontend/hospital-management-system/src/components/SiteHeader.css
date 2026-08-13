@@ -102,6 +102,40 @@ body.mobile-nav-open {
   overflow: hidden;
 }
 
+.site-header-user-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.site-header-user-menu:hover,
+.site-header-user-menu:focus,
+.site-header-user-menu.show {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  border-color: var(--color-primary-soft);
+}
+
+.site-header-user-menu::after {
+  display: none;
+}
+
+.site-header-user-menu-mobile .dropdown-menu {
+  width: 100%;
+}
+
+.site-header-user-menu-mobile .site-header-user-menu {
+  width: 100%;
+  justify-content: center;
+}
+
 @media (min-width: 992px) {
   .mobile-nav-panel,
   .mobile-nav-backdrop {

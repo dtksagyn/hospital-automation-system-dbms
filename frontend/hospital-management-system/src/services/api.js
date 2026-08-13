@@ -63,3 +63,17 @@ export function logoutUser() {
 export function getCurrentUser() {
   return request('/api/auth/me');
 }
+
+export function getDashboardSummary() {
+  return request('/api/dashboard');
+}
+
+export function getUserAppointments() {
+  return request('/api/dashboard/appointments');
+}
+
+export function cancelAppointment(appointmentId) {
+  return request(`/api/dashboard/appointments/${encodeURIComponent(appointmentId)}/cancel`, {
+    method: 'PATCH',
+  });
+}

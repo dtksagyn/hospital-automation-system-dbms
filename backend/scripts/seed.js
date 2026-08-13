@@ -5,6 +5,9 @@ const connectDB = require('../utils/db');
 const Department = require('../models/department');
 const Doctor = require('../models/doctor');
 const User = require('../models/user');
+const Appointment = require('../models/appointment');
+const Diagnosis = require('../models/diagnosis');
+const cipher = require('../utils/cipher');
 
 const departments = [
   { departmentName: 'Cardiology' },
@@ -24,15 +27,22 @@ const doctors = [
 async function seed() {
   await connectDB();
 
-  await Promise.all([Department.deleteMany({}), Doctor.deleteMany({}), User.deleteMany({})]);
+  await Promise.all([
+    Department.deleteMany({}),
+    Doctor.deleteMany({}),
+    User.deleteMany({}),
+    Appointment.deleteMany({}),
+    Diagnosis.deleteMany({}),
+  ]);
 
   const createdDepartments = await Department.insertMany(departments);
   const departmentMap = Object.fromEntries(
     createdDepartments.map((department) => [department.departmentName, department._id])
   );
 
+  const createdDoctors = {};
   for (const doctor of doctors) {
-    await Doctor.create({
+    createdDoctors[doctor.email] = await Doctor.create({
       firstName: doctor.firstName,
       lastName: doctor.lastName,
       email: doctor.email,
@@ -41,10 +51,50 @@ async function seed() {
     });
   }
 
-  await User.create({
+  const patient = await User.create({
     fullName: 'Jane Patient',
     email: 'patient@caremed.com',
     password: bcrypt.hashSync('patient123', 12),
+  });
+
+  const today = new Date();
+  const futureDate = new Date(today);
+  futureDate.setDate(today.getDate() + 5);
+  const pastDate = new Date(today);
+  pastDate.setDate(today.getDate() - 21);
+
+  const formatDate = (date) => date.toISOString().slice(0, 10);
+
+  const upcomingAppointment = await Appointment.create({
+    userId: patient._id,
+    firstName: 'Jane',
+    lastName: 'Patient',
+    phone: '+1 555 010 2000',
+    ssn: cipher.encryptSSN('+1 555 010 2000'),
+    departmentId: departmentMap.Cardiology,
+    doctorId: createdDoctors['sarah.mitchell@caremed.com']._id,
+    date: formatDate(futureDate),
+    time: '10:30:00',
+    status: 'active',
+  });
+
+  const completedAppointment = await Appointment.create({
+    userId: patient._id,
+    firstName: 'Jane',
+    lastName: 'Patient',
+    phone: '+1 555 010 2000',
+    ssn: cipher.encryptSSN('+1 555 010 2000'),
+    departmentId: departmentMap.Pulmonology,
+    doctorId: createdDoctors['james.carter@caremed.com']._id,
+    date: formatDate(pastDate),
+    time: '14:00:00',
+    status: 'active',
+  });
+
+  await Diagnosis.create({
+    description: 'Routine follow-up completed with stable results.',
+    medication: 'Salbutamol inhaler, 2 puffs as needed',
+    appointmentId: completedAppointment._id,
   });
 
   console.log('Seed complete.');
@@ -52,6 +102,7 @@ async function seed() {
   console.log('Doctors:', doctors.length);
   console.log('Demo doctor login: doctor@caremed.com / doctor123');
   console.log('Demo patient login: patient@caremed.com / patient123');
+  console.log('Upcoming appointment id:', upcomingAppointment._id.toString());
 
   process.exit(0);
 }

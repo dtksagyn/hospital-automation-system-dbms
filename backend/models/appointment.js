@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema(
   {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
     ssn: { type: String, required: true },
     firstName: { type: String, required: true, trim: true },
     lastName: { type: String, required: true, trim: true },
@@ -18,6 +23,11 @@ const appointmentSchema = new mongoose.Schema(
     date: { type: String, required: true },
     time: { type: String, required: true },
     phone: { type: String, trim: true },
+    status: {
+      type: String,
+      enum: ['active', 'cancelled'],
+      default: 'active',
+    },
   },
   {
     timestamps: false,
@@ -28,6 +38,7 @@ const appointmentSchema = new mongoose.Schema(
 
 appointmentSchema.index({ doctorId: 1, date: 1, time: 1 }, { unique: true });
 appointmentSchema.index({ date: 1 });
+appointmentSchema.index({ userId: 1, date: -1 });
 
 appointmentSchema.virtual('appointmentId').get(function () {
   return this._id.toString();
