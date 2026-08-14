@@ -2,10 +2,11 @@ const jwt = require('jsonwebtoken');
 const Doctor = require('../models/doctor');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secretkey';
+const DOCTOR_AUTH_COOKIE = 'doctorToken';
 
 const authenticate = async (req, res, next) => {
   try {
-    const token = req.signedCookies.token;
+    const token = req.signedCookies[DOCTOR_AUTH_COOKIE];
 
     if (!token) {
       return res.redirect('/doctors/login');

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { loginUser, registerUser } from "../../services/api";
 import { filterNameInput } from "../../utils/inputConstraints";
@@ -221,6 +221,13 @@ export default function AuthPage() {
           >
             {isSignup ? "Sign in" : "Sign up"}
           </a>
+        </p>
+
+        <p className="text-center small text-muted-soft mt-3 mb-0">
+          Are you a doctor?{" "}
+          <Link to="/doctor/login" className="auth-link">
+            Sign in to the doctor dashboard
+          </Link>
         </p>
       </div>
     </main>

@@ -14,7 +14,13 @@ const doctorSchema = new mongoose.Schema(
   },
   {
     timestamps: false,
-    toJSON: { virtuals: true },
+    toJSON: {
+      virtuals: true,
+      transform(_doc, ret) {
+        delete ret.password;
+        return ret;
+      },
+    },
     toObject: { virtuals: true },
   }
 );
