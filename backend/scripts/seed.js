@@ -97,6 +97,87 @@ async function seed() {
     appointmentId: completedAppointment._id,
   });
 
+  const demoDoctor = createdDoctors['doctor@caremed.com'];
+  const todayStr = formatDate(today);
+
+  const michaelAppointment = await Appointment.create({
+    userId: patient._id,
+    firstName: 'Michael',
+    lastName: 'Jones',
+    phone: '+1 555 010 3001',
+    ssn: cipher.encryptSSN('+1 555 010 3001'),
+    departmentId: departmentMap.Cardiology,
+    doctorId: demoDoctor._id,
+    date: todayStr,
+    time: '09:00:00',
+    patientAge: 34,
+    appointmentType: 'Follow-up',
+    reason: 'Routine blood pressure review',
+    visitStatus: 'completed',
+    status: 'active',
+  });
+
+  await Diagnosis.create({
+    description: 'Blood pressure stable. Continue current medication plan.',
+    medication: 'Lisinopril 10mg daily',
+    appointmentId: michaelAppointment._id,
+  });
+
+  await Appointment.create({
+    userId: patient._id,
+    firstName: 'Sarah',
+    lastName: 'Thompson',
+    phone: '+1 555 010 3002',
+    ssn: cipher.encryptSSN('+1 555 010 3002'),
+    departmentId: departmentMap.Cardiology,
+    doctorId: demoDoctor._id,
+    date: todayStr,
+    time: '10:00:00',
+    patientAge: 41,
+    appointmentType: 'Consultation',
+    reason: 'Chest discomfort evaluation',
+    visitStatus: 'in_progress',
+    status: 'active',
+  });
+
+  await Appointment.create({
+    userId: patient._id,
+    firstName: 'David',
+    lastName: 'Chen',
+    phone: '+1 555 010 3003',
+    ssn: cipher.encryptSSN('+1 555 010 3003'),
+    departmentId: departmentMap.Cardiology,
+    doctorId: demoDoctor._id,
+    date: todayStr,
+    time: '11:00:00',
+    patientAge: 52,
+    appointmentType: 'Check-up',
+    reason: 'Annual cardiac screening',
+    visitStatus: 'waiting',
+    status: 'active',
+  });
+
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  const tomorrowStr = formatDate(tomorrow);
+
+  await Appointment.create({
+    userId: patient._id,
+    firstName: 'Emily',
+    lastName: 'Rodriguez',
+    phone: '+1 555 010 3004',
+    ssn: cipher.encryptSSN('+1 555 010 3004'),
+    departmentId: departmentMap.Cardiology,
+    doctorId: demoDoctor._id,
+    date: tomorrowStr,
+    time: '13:00:00',
+    patientAge: 29,
+    appointmentType: 'Consultation',
+    reason: 'Post-surgery follow-up',
+    visitStatus: 'scheduled',
+    status: 'active',
+  });
+
   console.log('Seed complete.');
   console.log('Departments:', createdDepartments.length);
   console.log('Doctors:', doctors.length);

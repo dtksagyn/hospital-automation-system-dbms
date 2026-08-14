@@ -23,6 +23,14 @@ const appointmentSchema = new mongoose.Schema(
     date: { type: String, required: true },
     time: { type: String, required: true },
     phone: { type: String, trim: true },
+    patientAge: { type: Number, default: null },
+    appointmentType: { type: String, default: 'Consultation', trim: true },
+    reason: { type: String, default: 'Scheduled visit', trim: true },
+    visitStatus: {
+      type: String,
+      enum: ['scheduled', 'waiting', 'in_progress', 'completed'],
+      default: 'scheduled',
+    },
     status: {
       type: String,
       enum: ['active', 'cancelled'],

@@ -3,9 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { DASHBOARD_NAV } from "../../data/dashboardData";
 import "./DashboardSidebar.css";
 
-function SidebarLogo() {
+function SidebarLogo({ homePath, portalLabel }) {
   return (
-    <Link to="/dashboard" className="d-flex align-items-center gap-2 text-decoration-none">
+    <Link to={homePath} className="d-flex align-items-center gap-2 text-decoration-none">
       <span
         className="icon-badge bg-brand text-white"
         style={{ width: 40, height: 40 }}
@@ -18,14 +18,20 @@ function SidebarLogo() {
           className="d-block text-uppercase tracking-wide-2 text-ink-muted fw-semibold"
           style={{ fontSize: "0.72rem" }}
         >
-          Patient Portal
+          {portalLabel}
         </span>
       </span>
     </Link>
   );
 }
 
-export default function DashboardSidebar({ open, onClose }) {
+export default function DashboardSidebar({
+  open,
+  onClose,
+  navItems = DASHBOARD_NAV,
+  homePath = "/dashboard",
+  portalLabel = "Patient Portal",
+}) {
   const location = useLocation();
   const [isDesktop, setIsDesktop] = useState(
     () => window.matchMedia("(min-width: 992px)").matches,
@@ -60,15 +66,15 @@ export default function DashboardSidebar({ open, onClose }) {
         aria-hidden={!isDesktop && !open}
       >
         <div className="dashboard-sidebar__brand">
-          <SidebarLogo />
+          <SidebarLogo homePath={homePath} portalLabel={portalLabel} />
         </div>
 
         <nav className="dashboard-sidebar__nav" aria-label="Dashboard navigation">
           <div className="dashboard-sidebar__links">
-            {DASHBOARD_NAV.map((item) => {
+            {navItems.map((item) => {
               const isActive =
                 location.pathname === item.to ||
-                (item.to !== "/dashboard" && location.pathname.startsWith(item.to));
+                (item.to !== homePath && location.pathname.startsWith(item.to));
 
               return (
                 <Link

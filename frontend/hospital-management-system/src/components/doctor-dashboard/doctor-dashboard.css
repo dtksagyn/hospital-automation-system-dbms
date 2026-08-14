@@ -1,0 +1,196 @@
+.doctor-dashboard-search {
+  min-width: min(100%, 20rem);
+  max-width: 28rem;
+}
+
+.doctor-dashboard-search .form-control {
+  border-radius: 999px;
+  padding-left: 2.5rem;
+  border-color: var(--color-border);
+  background: var(--color-bg);
+}
+
+.doctor-dashboard-search__icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.doctor-dashboard-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.doctor-dashboard-profile__meta {
+  display: none;
+}
+
+.doctor-dashboard-layout {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.doctor-dashboard-main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.doctor-dashboard-side-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dashboard-status--waiting {
+  background: #fff4e5;
+  color: #b78103;
+}
+
+.dashboard-status--in-progress {
+  background: #eef3fd;
+  color: var(--color-primary);
+}
+
+.doctor-slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.doctor-slot--available {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+}
+
+.doctor-slot--booked {
+  background: var(--color-primary-soft);
+  border-color: rgba(29, 91, 214, 0.18);
+  color: var(--color-primary);
+}
+
+.doctor-slot--completed {
+  background: #e8f7ef;
+  color: #198754;
+}
+
+.doctor-slot--cancelled {
+  background: #fdecec;
+  color: #dc3545;
+}
+
+.doctor-slot--break {
+  background: #f3f4f6;
+  color: var(--color-text-muted);
+}
+
+.doctor-schedule-block {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+.doctor-schedule-block + .doctor-schedule-block {
+  margin-top: 0.75rem;
+}
+
+.doctor-schedule-block__header {
+  padding: 0.85rem 1rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.doctor-schedule-block__slots {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  overflow-x: auto;
+}
+
+.doctor-schedule-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.doctor-schedule-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.doctor-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.doctor-activity-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.doctor-patient-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.doctor-patient-card:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.doctor-patient-card__avatar,
+.doctor-appointment-row__avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.doctor-appointment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .doctor-dashboard-profile__meta {
+    display: block;
+  }
+
+  .doctor-dashboard-layout {
+    grid-template-columns: minmax(0, 1.7fr) minmax(18rem, 0.9fr);
+    align-items: start;
+  }
+}
+
+@media (min-width: 1200px) {
+  .doctor-dashboard-header .dashboard-header__actions {
+    gap: 1rem;
+  }
+}

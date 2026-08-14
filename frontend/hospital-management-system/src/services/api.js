@@ -77,3 +77,53 @@ export function cancelAppointment(appointmentId) {
     method: 'PATCH',
   });
 }
+
+export function loginDoctor(payload) {
+  return request('/api/doctor/auth/login', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export function logoutDoctor() {
+  return request('/api/doctor/auth/logout', {
+    method: 'POST',
+  });
+}
+
+export function getCurrentDoctor() {
+  return request('/api/doctor/auth/me');
+}
+
+export function getDoctorDashboardSummary(search = '') {
+  const query = search ? `?search=${encodeURIComponent(search)}` : '';
+  return request(`/api/doctor/dashboard${query}`);
+}
+
+export function getDoctorAppointments(params = {}) {
+  const searchParams = new URLSearchParams();
+  if (params.date) searchParams.set('date', params.date);
+  if (params.search) searchParams.set('search', params.search);
+  const query = searchParams.toString();
+  return request(`/api/doctor/appointments${query ? `?${query}` : ''}`);
+}
+
+export function getDoctorSchedule(date) {
+  const query = date ? `?date=${encodeURIComponent(date)}` : '';
+  return request(`/api/doctor/schedule${query}`);
+}
+
+export function getDoctorPatients(search = '') {
+  const query = search ? `?search=${encodeURIComponent(search)}` : '';
+  return request(`/api/doctor/patients${query}`);
+}
+
+export function updateDoctorAppointmentStatus(appointmentId, visitStatus) {
+  return request(
+    `/api/doctor/appointments/${encodeURIComponent(appointmentId)}/visit-status`,
+    {
+      method: 'PATCH',
+      body: JSON.stringify({ visitStatus }),
+    },
+  );
+}
